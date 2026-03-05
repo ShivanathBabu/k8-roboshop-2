@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1
+  labels:
+    component: app1
+    project: roboshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: app1
+      project: roboshop
+  template:
+    metadata:
+      labels:
+        component: app1
+        project: roboshop
+    spec:
+      containers:
+      - name: app1
+        image: shivanathbabu/app1:v1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1
+  labels:
+    component: app1
+    project: roboshop  
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-wildcard-host
+spec:
+  rules:
+  - host: "foo.bar.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/bar"
+        backend:
+          service:
+            name: service1
+            port:
+              number: 80
+ 

@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app3
-  namespace: roboshop
   labels:
     component: app3
     project: roboshop

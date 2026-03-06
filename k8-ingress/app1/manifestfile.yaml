@@ -42,7 +42,7 @@ kind: Ingress
 metadata:
   name: app1-ingress-wildcard-host
   annotations:
-    alb.ingress.kubernetes.io/listen-ports: [{"HTTPS": 443}]
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
     alb.ingress.kubernetes.io/wafv2-acl-arn: arn:aws:acm:us-east-1:139355608147:certificate/67316e00-9ae6-4e0e-b11c-68f472f644a8
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/scheme: internet-facing

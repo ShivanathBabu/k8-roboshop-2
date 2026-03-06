@@ -35,7 +35,7 @@ spec:
     component: app2
     project: roboshop
   ports:
-    protocol: TCP
+  - protocol: TCP
     port: 80
     targetPort: 80
 ---

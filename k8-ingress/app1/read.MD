@@ -1,7 +1,10 @@
+REGION_CODE=us-east-1 
+CLUSTER_NAME=exciting-outfit-1772766737
+ACCOUNT_ID=139355608147
 ### OIDC
 eksctl utils associate-iam-oidc-provider \
-    --region <region-code> \
-    --cluster <your-cluster-name> \
+    --region $REGION_CODE \
+    --cluster $CLUSTER_NAME \
     --approve
 
 ### Download an IAM policy
@@ -15,12 +18,12 @@ aws iam create-policy \
 
 ### Create an IAM role and Kubernetes ServiceAccount
 eksctl create iamserviceaccount \
---cluster=<cluster-name> \
+--cluster=$CLUSTER_NAME \
 --namespace=kube-system \
 --name=aws-load-balancer-controller \
---attach-policy-arn=arn:aws:iam::<AWS_ACCOUNT_ID>:policy/AWSLoadBalancerControllerIAMPolicy \
+--attach-policy-arn=arn:aws:iam::$ACCOUNT_ID:policy/AWSLoadBalancerControllerIAMPolicy \
 --override-existing-serviceaccounts \
---region <region-code> \
+--region $REGION_CODE \
 --approve
 
 ## Installing Controller
